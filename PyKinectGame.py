@@ -8,6 +8,9 @@ a framework for games using Pygame with a Kinect Sensor
 Created for 15-112 at Carnegie Mellon University
 Use without permission, with citation
 Modify to your liking
+
+@TODO: jointIsTracked (currently returns True)
+@TODO: pygame events
 """
 
 import PyKinectRuntime
