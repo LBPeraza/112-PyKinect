@@ -9,7 +9,6 @@ Created for 15-112 at Carnegie Mellon University
 Use without permission, with citation
 Modify to your liking
 
-@TODO: jointIsTracked (currently returns True)
 @TODO: pygame events
 """
 
@@ -179,8 +178,7 @@ class PyKinectGame(object):
 
     def jointIsTracked(self, body, joint):
     	joints = body.joints
-    	return True
-    	return joints[joint].tracking_state == PyKinectV2.TrackingState_Tracked
+    	return joints[joint].TrackingState == PyKinectV2.TrackingState_Tracked
 
     def jointPositions(self, body, screen=True):
         """Get positions of all joints in a body
@@ -225,6 +223,10 @@ class PyKinectGame(object):
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: self.running = False
+                elif event.type == pygame.KEYDOWN:
+                    self.onKey(event.key)
+                elif event.type == pygame.KEYUP:
+                    self.onKeyUp(event.key)
 
             self.onStep(dt)
 
@@ -232,7 +234,6 @@ class PyKinectGame(object):
             pygame.display.flip()
 
         pygame.quit()
-
 
 
 # EXAMPLE GAME
